@@ -1,48 +1,74 @@
-/* Styles for the main container */
-.container {
-    max-width: 900px; /* Maximum width of the container */
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 40px; /* Padding inside the container */
-    margin-top: 10%; /* Top margin of 10% */
+.login-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  margin-top: 10%;
 }
-/* Styles for form groups */
-.form-group {
-    margin-bottom: 20px; /* Bottom margin for spacing between form groups */
+
+.login-grid {
+  display: flex;
+  gap: 20px;
+  background-color: #f5f7f8;
+  border-radius: 10px;
+  padding: 0 20px 30px;
+  flex-direction: column;
 }
-/* Styles for form group labels */
-.form-group label {
-    display: block; /* Make labels display as block elements */
-    margin-bottom: 5px; /* Bottom margin for spacing below labels */
-    font-weight: bold; /* Bold text for labels */
+
+.login-text {
+  margin-top: 30px;
+  text-align: center;
 }
-/* Styles for form controls */
-.form-control {
-    width: 40%; /* Width of form controls */
-    padding: 8px; /* Padding inside form controls */
-    font-size: 16px; /* Font size of form controls */
-    border: 1px solid #ccc; /* Border around form controls */
-    border-radius: 4px; /* Border radius for rounded corners */
+.login-text1 {
+  text-align: center;
 }
-/* Styles for button groups */
-.btn-group {
-    margin-top: .0001px; /* Top margin for spacing above button groups */
-    margin-bottom: 20px; /* Bottom margin for spacing below button groups */
+.login-text:last-child {
+  margin-bottom: 10px;
 }
-/* Styles for buttons */
+.login-text1 span {
+  color: #3c79a7;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-form-group {
+  margin-bottom: 20px;
+}
+
+.login-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login-form-control {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-subgroup {
+  margin-top: 20px;
+  margin-right: 20px;
+  grid-column: 1 / 4;
+  text-align: center;
+}
+
 .btn {
-    padding: 10px 20px; /* Padding inside buttons */
-    font-size: 16px; /* Font size of buttons */
-    border: none; /* No border for buttons */
-    border-radius: 4px; /* Border radius for rounded corners on buttons */
-    cursor: pointer; /* Cursor style on hover for buttons */
+  padding: 10px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-/* Styles for primary buttons */
+
 .btn-primary {
-    background-color: #007bff; /* Background color for primary buttons */
-    color: #fff; /* Text color for primary buttons */
+  background-color: #007bff;
+  color: #fff;
 }
-/* Styles for danger (red) buttons */
+
 .btn-danger {
-    background-color: #dc3545; /* Background color for danger buttons */
-    color: #fff; /* Text color for danger buttons */
+  background-color: #dc3545;
+  color: #fff;
 }
