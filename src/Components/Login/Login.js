@@ -3,19 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../../config";
 import "./Login.css";
 
-export default function Login() {
+const Login = () => {
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [showerr, setShowerr] = useState("");
-
-  const validateEmail = function (email) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(email);
-  };
-  const togglePasswordVisibility = function () {
-    setShowPassword(!showPassword);
-  };
 
   const navigate = useNavigate();
 
@@ -23,43 +15,62 @@ export default function Login() {
     if (sessionStorage.getItem("auth-token")) {
       navigate("/");
     }
-    
-  }, []);
+  }, [navigate]);
+
+  const validateEmail = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const login = async () => {
-    const res = await fetch(`${API_URL}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
+    try {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-    const json = await res.json();
-    if (json.authtoken) {
-      sessionStorage.setItem("auth-token", json.authtoken);
+      const json = await res.json();
+      console.log("API Response:", json); // ✅ Debugging
 
-      sessionStorage.setItem("email", email);
-      navigate("/");
-      window.location.reload();
-    } else {
-      if (json.errors) {
-        for (const error of json.errors) {
-          setShowerr(error.msg);
+      if (json.authtoken) {
+        sessionStorage.setItem("auth-token", json.authtoken);
+        sessionStorage.setItem("email", email);
+
+        if (json.name) { 
+          sessionStorage.setItem("name", json.name);
+        } else {
+          console.warn("No name field in API response!");
         }
+
+        navigate("/");
+        window.location.reload();
       } else {
-        setShowerr(json.error);
+        if (json.errors) {
+          setShowerr(json.errors.map((error) => error.msg).join(", "));
+        } else {
+          setShowerr(json.error);
+        }
       }
+    } catch (error) {
+      console.error("Login error:", error);
+      setShowerr("An error occurred. Please try again.");
     }
   };
 
-  const submitHandler = function (e) {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
-      setShowerr("Please Enter a Valid Email");
+      setShowerr("Please enter a valid email.");
       return;
     }
     login();
@@ -91,7 +102,6 @@ export default function Login() {
                 id="email"
                 className="login-form-control"
                 placeholder="Enter your email"
-                aria-describedby="helpId"
                 required
               />
               {showerr && <div className="err">{showerr}</div>}
@@ -109,29 +119,21 @@ export default function Login() {
                   required
                   className="login-form-control"
                   placeholder="Enter your password"
-                  aria-describedby="helpId"
                 />
-                <span
-                  className="password-icon"
-                  onClick={togglePasswordVisibility}
-                >
-                  {showPassword ? (
-                    <i className="fa fa-eye"></i>
-                  ) : (
-                    <i className="fa fa-eye-slash"></i>
-                  )}
+                <span className="password-icon" onClick={togglePasswordVisibility}>
+                  {showPassword ? <i className="fa fa-eye"></i> : <i className="fa fa-eye-slash"></i>}
                 </span>
               </div>
             </div>
 
             <div className="btn-subgroup">
-              <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+              <button type="submit" className="btn btn-primary">
                 Login
               </button>
             </div>
-            
+
             <div className="btn-subgroup">
-              <button type="reset" className="btn btn-danger mb-2 waves-effect waves-light">
+              <button type="reset" className="btn btn-danger">
                 Reset
               </button>
             </div>
@@ -142,4 +144,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;
