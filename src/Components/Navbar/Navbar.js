@@ -72,7 +72,7 @@ export default function Navbar() {
       <ul className={click ? "nav__links active" : "nav__links"}>
       <li className="link">
        <Link to="/">Home</Link>
-           </li>
+       </li>
         <li className="link">
          <Link to="/instant-consultation">Appointments</Link>
         </li>

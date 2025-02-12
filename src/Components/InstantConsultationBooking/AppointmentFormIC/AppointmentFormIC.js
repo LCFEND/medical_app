@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
-  const [name, setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedSlot, setSelectedSlot] = useState('');
-  const [error, setError] = useState('');
+const AppointmentFormIC = ({ onSubmit }) => {
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [errorNumber, setErrorNumber] = useState("");
+  const [date, setDate] = useState("");
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
+  const handleSlotSelection = (slot) => {
+    setSelectedSlot(slot);
+  };
+
+  const validatePhoneNumber = function (phone) {
+    const phoneNumberPattern = /^\d{10}$/;
+    return phoneNumberPattern.test(phone);
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (!name || !phoneNumber || !selectedDate || !selectedSlot) {
-      setError('All fields are required.');
+
+    if (!validatePhoneNumber(phoneNumber)) {
+      setErrorNumber("Phone Number Should Be 10 Digits.");
       return;
     }
-    setError('');
-    onSubmit({ name, phoneNumber, doctorName, doctorSpeciality, selectedDate, selectedSlot });
-    setName('');
-    setPhoneNumber('');
-    setSelectedDate('');
-    setSelectedSlot('');
+
+    onSubmit({ name, phoneNumber, date, selectedSlot });
+    setName("");
+    setPhoneNumber("");
+    setDate("");
+    setSelectedSlot("");
   };
 
   return (
@@ -28,6 +38,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
         <input
           type="text"
           id="name"
+          minLength="4"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -38,30 +49,34 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
         <input
           type="tel"
           id="phoneNumber"
+          minLength="10"
+          maxLength="10"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
+        {errorNumber && <div className="err">{errorNumber}</div>}
       </div>
       <div className="form-group">
-        <label htmlFor="date">Select Date:</label>
+        <label htmlFor="date">Date of Appointment:</label>
         <input
           type="date"
           id="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
         />
       </div>
       <div className="form-group">
-        <label htmlFor="timeSlot">Select Time Slot:</label>
+        <label htmlFor="time">Book Time Slot:</label>
         <select
-          id="timeSlot"
-          value={selectedSlot}
-          onChange={(e) => setSelectedSlot(e.target.value)}
+          name="time"
+          id="time"
+          onChange={(e) => handleSlotSelection(e.target.value)}
+          defaultValue="Select a time slot"
           required
         >
-          <option value="">Select Time</option>
+          <option disabled>Select a time slot</option>
           <option value="09:00 AM">09:00 AM</option>
           <option value="10:00 AM">10:00 AM</option>
           <option value="11:00 AM">11:00 AM</option>
@@ -69,7 +84,6 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
           <option value="03:00 PM">03:00 PM</option>
         </select>
       </div>
-      {error && <p className="error-text">{error}</p>}
       <button type="submit">Book Now</button>
     </form>
   );
