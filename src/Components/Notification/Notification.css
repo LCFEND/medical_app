@@ -1,0 +1,49 @@
+/* Notification Popup */
+.notification-popup {
+    position: fixed;
+    top: 20px;  /* Adjust the distance from the top */
+    right: 20px; /* Adjust the distance from the right */
+    background-color: #4CAF50; /* Green background for success */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px; /* Control the width of the notification */
+  }
+  
+  .notification-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .notification-popup button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    font-weight: bold;
+  }
+  
+  .notification-popup button:hover {
+    color: #ddd;
+  }
+  
+  /* Appointment Card Styling (Already in your CSS) */
+  .appointment-card {
+      padding: 1.5rem;
+      background-color: #3685fbeb;
+      color: #fff;
+      z-index: 777;
+      position: fixed;
+      bottom: 0;
+      right: 2%;
+      border-radius: 5px 5px 0 0;
+  }
+  
