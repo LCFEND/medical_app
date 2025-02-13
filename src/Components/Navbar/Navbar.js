@@ -80,7 +80,7 @@ export default function Navbar() {
           <Link to="Healthblog">Health Blog</Link>
         </li>
         <li className="link">
-          <Link to="ReviewForm">Reviews</Link>
+        <Link to="/reviews">Reviews</Link> 
         </li>
         {isLoggedIn ? (
           <>
