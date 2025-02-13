@@ -1,65 +1,132 @@
+/* Container for the entire review section */
 .review-container {
-    width: 70%;
-    margin: auto;
-    text-align: justify;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 100px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  .feedback-btn {
-    background-color: blue;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .feedback-form {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-    text-align: left;
-  }
-  
-  .feedback-form h3 {
-    text-align: center;
-  }
-  
-  .feedback-form label {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  .feedback-form input,
-  .feedback-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-  }
-  
-  .feedback-form button {
-    display: block;
-    width: 100%;
-    margin-top: 15px;
-    padding: 10px;
-    background: blue;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
+  width: 80%; /* Increased width for better alignment */
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.feedback-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.feedback-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Feedback Form Styles */
+.feedback-form {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.feedback-form label {
+  display: block;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  border-color: #007bff;
+}
+
+.feedback-form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.feedback-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Star Rating */
+.star-rating {
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  margin-top: 15px;
+}
+
+.star {
+  font-size: 35px;
+  cursor: pointer;
+  color: #ddd;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.star:hover {
+  color: gold;
+}
+
+/* Styling for the warning message */
+.warning {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
