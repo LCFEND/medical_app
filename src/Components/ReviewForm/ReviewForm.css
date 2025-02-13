@@ -27,3 +27,39 @@
     cursor: pointer;
   }
   
+  .feedback-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    text-align: left;
+  }
+  
+  .feedback-form h3 {
+    text-align: center;
+  }
+  
+  .feedback-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .feedback-form input,
+  .feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .feedback-form button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
