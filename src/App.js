@@ -7,6 +7,7 @@ import SignUp from "./Components/Sign_Up/Sign_Up";
 import InstantConsultation from "./Components/InstantConsultationBooking/InstantConsultation";
 import Notification from './Components/Notification/Notification';
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
+import ProfileCard from './Components/ProfileCard/ProfileCard';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/instant-consultation" element={<InstantConsultation />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/reviews" element={<ReviewForm />} />  {/* 🔹 ADD THIS */}
+          <Route path="/ProfileCard" element={<ProfileCard/>}/>
         </Routes>
       </BrowserRouter>
     </div>
