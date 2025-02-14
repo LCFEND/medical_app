@@ -79,11 +79,8 @@ const AppointmentForm = ({ onSubmit }) => {
           required
         >
           <option disabled>Select a time slot</option>
-          <option value="09:00 AM">09:00 AM</option>
-          <option value="10:00 AM">10:00 AM</option>
-          <option value="11:00 AM">11:00 AM</option>
-          <option value="02:00 PM">02:00 PM</option>
-          <option value="03:00 PM">03:00 PM</option>
+          <option value="9.00 AM">9.00 AM</option>
+          <option value="20.00 PM">20.00 PM</option>
         </select>
       </div>
       <button type="submit">Book Now</button>

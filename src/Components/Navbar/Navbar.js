@@ -56,7 +56,7 @@ export default function Navbar() {
     }, []);
   
     
-  return (
+   return (
     <header>
     <nav className="nav">
       <div className="nav__logo">
@@ -70,17 +70,18 @@ export default function Navbar() {
         <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
       </div>
       <ul className={click ? "nav__links active" : "nav__links"}>
-      <li className="link">
-       <Link to="/">Home</Link>
-       </li>
         <li className="link">
-         <Link to="/instant-consultation">Appointments</Link>
+          <Link to="Home">Home</Link>
+        </li>
+        <li className="link">
+          {/* <Link to="search/doctors">Appointments</Link> */}
+          <Link to="BookingConsultation">Appointments</Link>
         </li>
         <li className="link">
           <Link to="Healthblog">Health Blog</Link>
         </li>
         <li className="link">
-        <Link to="/reviews">Reviews</Link> 
+          <Link to="ReviewForm">Reviews</Link>
         </li>
         {isLoggedIn ? (
           <>
