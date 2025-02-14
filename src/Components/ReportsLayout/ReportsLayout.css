@@ -1,36 +1,50 @@
-/* Layout Container */
+/* Container for the whole reports layout */
 .reports-layout {
     margin: auto;
     max-width: 900px;
     margin-top: 5%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  /* Title */
+  /* Title for the reports section */
   .reports-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
   }
   
-  /* Table Styling */
+  /* Styling the table */
   .reports-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+    margin-top: 20px;
   }
   
+  /* Table headers */
   .reports-table th {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     font-weight: bold;
-    padding: 12px;
+    padding: 14px;
+    color: #555;
+    text-align: center;
+    border: 1px solid #ddd;
   }
   
+  /* Table data cells */
   .reports-table td {
     padding: 12px;
     vertical-align: middle;
+    border: 1px solid #ddd;
+    color: #333;
   }
   
-  /* Buttons */
+  /* Styling for the view and download buttons */
   .view-btn,
   .download-btn {
     background-color: #007bff;
@@ -40,8 +54,9 @@
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
   }
   
   .view-btn:hover,
@@ -49,14 +64,41 @@
     background-color: #0056b3;
   }
   
-  /* Row Hover Effect */
+  /* Hover effect for table rows */
   .reports-table tr:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
+    background-color: #f9f9f9;
   }
   
-  /* Selected Row */
-  .reports-table .selected {
-    background-color: #dfe9ff;
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .reports-layout {
+      padding: 15px;
+      margin-top: 10%;
+    }
+  
+    .reports-title {
+      font-size: 24px;
+    }
+  
+    .reports-table th,
+    .reports-table td {
+      padding: 10px;
+    }
+  
+    .view-btn,
+    .download-btn {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
+  
+  /* Adding a subtle shadow to the report container for a more polished look */
+  .reports-layout {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ensuring buttons in the last two columns fit well */
+  .reports-table td a {
+    width: 100%;
   }
   

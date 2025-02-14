@@ -1,31 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ReportsLayout.css";
 
 const ReportsLayout = () => {
-  const [selectedReport, setSelectedReport] = useState(null);
-
-  // Reports data
   const reportsData = [
-    { id: 1, doctor: "Dr. John Doe", specialty: "Cardiology", reportAvailable: true },
-    { id: 2, doctor: "Dr. Jane Smith", specialty: "Dermatology", reportAvailable: true },
+    { id: 1, doctor: "Dr. John Doe", specialty: "Cardiology" },
+    { id: 2, doctor: "Dr. Jane Smith", specialty: "Dermatology" },
   ];
-
-  // Open report in new tab
-  const openReportInNewTab = () => {
-    const reportUrl = "/patient_report.pdf"; // Ensure this file exists
-    window.open(reportUrl, "_blank");
-  };
-
-  // Download report
-  const downloadReport = () => {
-    const reportUrl = "/patient_report.pdf"; // Ensure this file exists
-    const link = document.createElement("a");
-    link.href = reportUrl;
-    link.download = "patient_report.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <div className="reports-layout">
@@ -44,19 +24,19 @@ const ReportsLayout = () => {
         </thead>
         <tbody>
           {reportsData.map((report, index) => (
-            <tr key={report.id} className={selectedReport?.id === report.id ? "selected" : ""}>
+            <tr key={report.id}>
               <td>{index + 1}</td>
               <td>{report.doctor}</td>
               <td>{report.specialty}</td>
               <td>
-                <button className="view-btn" onClick={openReportInNewTab}>
-                  View Report
-                </button>
+                <a href="/patient_report.pdf" target="_blank" rel="noopener noreferrer">
+                  <button className="view-btn">View Report</button>
+                </a>
               </td>
               <td>
-                <button className="download-btn" onClick={downloadReport}>
-                  Download Report
-                </button>
+                <a href="/patient_report.pdf" download="patient_report.pdf">
+                  <button className="download-btn">Download Report</button>
+                </a>
               </td>
             </tr>
           ))}
