@@ -21,18 +21,16 @@ const ProfileCard = () => {
   const fetchUserProfile = async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email"); // Get the email from sessionStorage
+      const email = sessionStorage.getItem("email");
 
       if (!authtoken) {
         navigate("/login");
       } else {
-        // Check sessionStorage first for user details
         const storedUserDetails = JSON.parse(sessionStorage.getItem("userDetails"));
         if (storedUserDetails) {
           setUserDetails(storedUserDetails);
           setUpdatedDetails(storedUserDetails);
         } else {
-          // If no user details in sessionStorage, fetch from API
           const response = await fetch(`${API_URL}/api/auth/user`, {
             headers: {
               Authorization: `Bearer ${authtoken}`,
@@ -44,7 +42,6 @@ const ProfileCard = () => {
             const user = await response.json();
             setUserDetails(user);
             setUpdatedDetails(user);
-            // Save to sessionStorage
             sessionStorage.setItem("userDetails", JSON.stringify(user));
           } else {
             throw new Error("Failed to fetch user profile");
@@ -99,9 +96,7 @@ const ProfileCard = () => {
       });
 
       if (response.ok) {
-        // Save updated details to sessionStorage
         sessionStorage.setItem("userDetails", JSON.stringify(updatedDetails));
-
         setUserDetails(updatedDetails);
         setEditMode(false);
         alert("Profile Updated Successfully!");
@@ -155,6 +150,27 @@ const ProfileCard = () => {
             />
           </label>
           <label>
+            Date of Birth
+            <input
+              type="date"
+              name="dob"
+              value={updatedDetails.dob || ""}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Sex
+            <select
+              name="sex"
+              value={updatedDetails.sex || ""}
+              onChange={handleInputChange}
+            >
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>
             Profile Image
             <input
               type="file"
@@ -184,6 +200,8 @@ const ProfileCard = () => {
           <p><b>Email:</b> {userDetails.email}</p>
           <p><b>Phone:</b> {userDetails.phone}</p>
           <p><b>Address:</b> {userDetails.address || "N/A"}</p>
+          <p><b>Date of Birth:</b> {userDetails.dob || "N/A"}</p>
+          <p><b>Sex:</b> {userDetails.sex || "N/A"}</p>
           <button onClick={handleEdit}>Edit</button>
         </div>
       )}

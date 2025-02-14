@@ -1,152 +1,196 @@
 /* Main container for the profile card */
 .profile-container {
-  max-width: 450px;
-  margin: 10% auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect to make the card appear more interactive */
-.profile-container:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Styling for headers */
-.profile-container h1 {
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-}
-
-.profile-container h2 {
-  margin-top: 0;
-  font-size: 20px;
-  font-weight: normal;
-  color: #777;
-  text-align: center;
-}
-
-/* Form and input fields */
-.profile-container form {
-  margin-top: 20px;
-}
-
-.profile-container label {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.profile-container input[type="text"],
-.profile-container input[type="email"],
-.profile-container input[type="file"] {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #333;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease;
-}
-
-/* Focus effect for input fields */
-.profile-container input[type="text"]:focus,
-.profile-container input[type="email"]:focus {
-  border-color: #2190ff;
-  outline: none;
-}
-
-/* Profile image container */
-.profile-image-container {
-  display: flex;
-  justify-content: center; /* Horizontally centers the image */
-  align-items: center; /* Vertically centers the image */
-  margin-top: 15px;
-}
-
-/* Profile image styling */
-.profile-image-preview,
-.profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #e1e1e1;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Button styling */
-.profile-container button,
-.profile-details button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background-color: #2190ff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
-}
-
-.profile-container button:hover,
-.profile-details button:hover {
-  background-color: #1e7de6; /* Darker shade of blue */
-}
-
-/* Profile details */
-.profile-details {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 30px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-.profile-details p {
-  font-size: 16px;
-  color: #555;
-  margin: 10px 0;
-}
-
-/* Error message styling */
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 480px) {
-  .profile-container {
-    width: 90%;
-    padding: 20px;
+    max-width: 450px;
+    margin: 10% auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
+  
+  /* Hover effect to make the card appear more interactive */
+  .profile-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Styling for headers */
   .profile-container h1 {
-    font-size: 22px;
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
   }
-
+  
+  .profile-container h2 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: normal;
+    color: #777;
+    text-align: center;
+  }
+  
+  /* Form and input fields */
+  .profile-container form {
+    margin-top: 20px;
+  }
+  
+  .profile-container label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
   .profile-container input[type="text"],
   .profile-container input[type="email"],
   .profile-container input[type="file"],
-  .profile-container button {
-    padding: 10px;
+  .profile-container select,
+  .profile-container input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
-
+  
+  /* Hover and focus effect for input fields */
+  .profile-container input[type="text"]:hover,
+  .profile-container input[type="email"]:hover,
+  .profile-container select:hover,
+  .profile-container input[type="date"]:hover {
+    border-color: #2190ff;
+    background-color: #f3f8ff;
+  }
+  
+  .profile-container input[type="text"]:focus,
+  .profile-container input[type="email"]:focus,
+  .profile-container select:focus,
+  .profile-container input[type="date"]:focus {
+    border-color: #2190ff;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  /* Profile image container */
+  .profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  /* Profile image styling */
+  .profile-image-preview,
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e1e1e1;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button styling */
+  .profile-container button,
+  .profile-details button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #2190ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+  }
+  
+  /* Hover effect for buttons */
+  .profile-container button:hover,
+  .profile-details button:hover {
+    background-color: #1e7de6;
+  }
+  
+  /* Active effect for buttons */
+  .profile-container button:active,
+  .profile-details button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Profile details */
+  .profile-details {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
   .profile-details p {
-    font-size: 14px;
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
   }
-}
+  
+  /* Error message styling */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .profile-container {
+      width: 80%;
+      padding: 25px;
+    }
+  
+    .profile-container h1 {
+      font-size: 22px;
+    }
+  
+    .profile-container input[type="text"],
+    .profile-container input[type="email"],
+    .profile-container input[type="file"],
+    .profile-container button {
+      padding: 10px;
+    }
+  
+    .profile-details p {
+      font-size: 14px;
+    }
+  }
+  
+  /* Further optimization for small devices (mobile view) */
+  @media (max-width: 480px) {
+    .profile-container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .profile-container h1 {
+      font-size: 20px;
+    }
+  
+    .profile-container input[type="text"],
+    .profile-container input[type="email"],
+    .profile-container input[type="file"],
+    .profile-container button {
+      padding: 10px;
+    }
+  
+    .profile-details p {
+      font-size: 14px;
+    }
+  }
+  
