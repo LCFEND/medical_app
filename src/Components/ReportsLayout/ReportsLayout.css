@@ -1,0 +1,62 @@
+/* Layout Container */
+.reports-layout {
+    margin: auto;
+    max-width: 900px;
+    margin-top: 5%;
+  }
+  
+  /* Title */
+  .reports-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  /* Table Styling */
+  .reports-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .reports-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    padding: 12px;
+  }
+  
+  .reports-table td {
+    padding: 12px;
+    vertical-align: middle;
+  }
+  
+  /* Buttons */
+  .view-btn,
+  .download-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .view-btn:hover,
+  .download-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Row Hover Effect */
+  .reports-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  /* Selected Row */
+  .reports-table .selected {
+    background-color: #dfe9ff;
+  }
+  
