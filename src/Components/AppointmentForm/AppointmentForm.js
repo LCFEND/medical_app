@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import './AppointmentForm.css';
 
-const AppointmentForm = ({ onSubmit }) => {
+const AppointmentFormIC = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorNumber, setErrorNumber] = useState("");
@@ -29,11 +28,10 @@ const AppointmentForm = ({ onSubmit }) => {
     setName("");
     setPhoneNumber("");
     setDate("");
-    setSelectedSlot(null);
+    setSelectedSlot("");
   };
 
   return (
-    <section className="review-form">
     <form onSubmit={handleFormSubmit} className="appointment-form">
       <div className="form-group">
         <label htmlFor="name">Name:</label>
@@ -79,14 +77,18 @@ const AppointmentForm = ({ onSubmit }) => {
           required
         >
           <option disabled>Select a time slot</option>
-          <option value="9.00 AM">9.00 AM</option>
-          <option value="20.00 PM">20.00 PM</option>
+          <option value="09:00 AM">09:00 AM</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="01:00 PM">01:00 PM</option>
+          <option value="02:00 PM">02:00 PM</option>
+          <option value="03:00 PM">03:00 PM</option>
+          <option value="04:00 PM">04:00 PM</option>
         </select>
       </div>
       <button type="submit">Book Now</button>
     </form>
-    </section>
   );
 };
 
-export default AppointmentForm;
+export default AppointmentFormIC;
