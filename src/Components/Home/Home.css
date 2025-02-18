@@ -31,8 +31,8 @@
 
 /* Ensuring all images are the same size */
 .button-image {
-    width: 150px;  
-    height: 150px;
+    width: 160px;  
+    height: 160px;
     object-fit: contain;
     margin-bottom: 0px;
 }
@@ -73,7 +73,7 @@
     }
 
     .button-image {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
     }
 }
