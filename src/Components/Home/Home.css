@@ -22,11 +22,11 @@
 
 /* Wrapper for each button + image */
 .button-wrapper {
-    display: flex;
-    flex-direction: column;
+
     align-items: center;
     justify-content: center;
     width: 100%;
+    min-height: 310px;
 }
 
 /* Ensuring all images are the same size */
@@ -34,21 +34,19 @@
     width: 150px;  
     height: 150px;
     object-fit: contain;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 /* Styling for buttons */
 .hero-section .button {
-    padding: 1rem 0; /* Uniform padding */
     border-radius: 12px;
     background-color: #2190FF;
     color: #fff;
     border: 1px solid transparent;
     width: 220px; /* Fixed width */
-    height: 60px; /* Fixed height */
+    height: 80px; /* Fixed height */
     font-size: 18px;
-    font-weight: bold;
-    display: flex;
+    font-weight: bold;    
     justify-content: center;
     align-items: center;
     text-align: center;

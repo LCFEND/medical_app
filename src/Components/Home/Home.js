@@ -11,8 +11,7 @@ import healthBlogImg from "../../assets/healthblog.png";
 const Home = () => {
   return (
     <section className="hero-section">
-      <div className="buttons-container">
-        
+      <div className="buttons-container">        
         <div className="button-wrapper">
           <img src={consultationImg} alt="Instant Consultation" className="button-image" />
           <Link to="/instant-consultation">
@@ -39,7 +38,6 @@ const Home = () => {
             </button>
           </Link>
         </div>
-
         <div className="button-wrapper">
           <img src={healthBlogImg} alt="Health Tips and Guidance" className="button-image" />
           <Link to="/healthblog">
