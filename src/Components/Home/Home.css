@@ -9,13 +9,13 @@
     background-color: transparent;
 }
 
-/* Create a responsive grid for 4 buttons in a row */
+/* Grid for 4 buttons in a row */
 .buttons-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
     gap: 30px; /* Space between buttons */
     text-align: center;
-    max-width: 1200px; /* Prevents content from stretching too much */
+    max-width: 1000px; /* Prevents buttons from stretching */
     width: 100%;
     margin-top: 30px;
 }
@@ -26,51 +26,56 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
-/* Ensuring all images have the same size */
+/* Ensuring all images are the same size */
 .button-image {
-    width: 120px;  
-    height: 120px;
+    width: 150px;  
+    height: 150px;
     object-fit: contain;
     margin-bottom: 15px;
 }
 
 /* Styling for buttons */
 .hero-section .button {
-    padding: 0.9rem 2rem;
+    padding: 1rem 0; /* Uniform padding */
     border-radius: 12px;
     background-color: #2190FF;
     color: #fff;
     border: 1px solid transparent;
-    width: 100%;
-    max-width: 220px;
+    width: 220px; /* Fixed width */
+    height: 60px; /* Fixed height */
     font-size: 18px;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Add hover effect */
 .hero-section .button:hover {
     background-color: #1a78d3;
     transform: scale(1.05);
 }
 
-/* Responsive layout: stack buttons in 2 per row on medium screens */
+/* Responsive: 2 buttons per row on medium screens */
 @media screen and (max-width: 1024px) {
     .buttons-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Responsive layout: stack buttons in 1 column on smaller screens */
+/* Responsive: 1 button per row on small screens */
 @media screen and (max-width: 600px) {
     .buttons-container {
-        grid-template-columns: 1fr; /* 1 button per row */
+        grid-template-columns: 1fr;
     }
 
     .button-image {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 }
