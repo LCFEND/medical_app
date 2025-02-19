@@ -23,7 +23,7 @@ const Home = () => {
 
         <div className="button-wrapper">
           <img src={appointmentImg} alt="Book an Appointment" className="button-image" />
-          <Link to="/consultation">
+          <Link to="/book-appointment"> {/* Change the path here */}
             <button type="button" className="btn btn-primary btn-lg button">
               Book an Appointment
             </button>
