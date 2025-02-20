@@ -37,6 +37,7 @@ function App() {
           <Route path="/book-appointment" element={<BookConsultation />} />
           
         </Routes>
+        <Notification/>
       </BrowserRouter>
     </div>
   );
