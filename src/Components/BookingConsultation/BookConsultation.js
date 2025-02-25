@@ -30,7 +30,7 @@ const BookConsultation = () => {
     const handleSearch = (searchText) => {
         if (searchText === '') {
             setFilteredDoctors([]);
-            setIsSearched(false);
+            setIsSearched(true);
         } else {
             const filtered = doctors.filter(
                 (doctor) =>

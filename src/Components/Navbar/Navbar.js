@@ -63,7 +63,7 @@ export default function Navbar() {
             <Link to="/home">Home</Link> {/* Fixing the route path */}
           </li>
           <li className="link">
-            <Link to="/consultation">Appointments</Link> {/* Fixing the route path */}
+            <Link to="/book-appointment">Appointments</Link> {/* Fixing the route path */}
           </li>
           <li className="link">
             <Link to="/healthblog">Health Blog</Link> {/* Fixing the route path */}

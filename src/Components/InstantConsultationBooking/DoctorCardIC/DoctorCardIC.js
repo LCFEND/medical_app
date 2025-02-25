@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { v4 as uuidv4 } from "uuid";
@@ -13,17 +13,19 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
     setShowModal(true);
   };
 
-  const handleCancel = (appointmentId) => {
-    const updatedAppointments = appointments.filter(
-      (appointment) => appointment.id !== appointmentId
-    );
-    setAppointments(updatedAppointments);
+  const handleCancel = () => {
+    // Remove stored appointment data
+    localStorage.removeItem("appointmentData");
+    localStorage.removeItem("doctorData");
 
-    // Delete appointment data from localStorage
-    localStorage.removeItem('appointmentData');
-
-    // Trigger changes in the Notification component with storage events
+    // Notify other components via storage event
     window.dispatchEvent(new Event("storage"));
+
+    // Clear the appointments state
+    setAppointments([]);
+
+    // Reopen the booking form
+    setShowModal(true);
   };
 
   const handleFormSubmit = (appointmentData) => {
@@ -31,19 +33,15 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
       id: uuidv4(),
       ...appointmentData,
     };
-    const updatedAppointments = [...appointments, newAppointment];
+
+    const updatedAppointments = [newAppointment];
     setAppointments(updatedAppointments);
     setShowModal(false);
 
-    const doctorData = {
-        name,
-        speciality,
-        experience,
-        ratings
-    }
+    const doctorData = { name, speciality, experience, ratings };
 
-    localStorage.setItem('doctorData', JSON.stringify(doctorData));
-    localStorage.setItem('appointmentData', JSON.stringify(newAppointment));
+    localStorage.setItem("doctorData", JSON.stringify(doctorData));
+    localStorage.setItem("appointmentData", JSON.stringify(newAppointment));
 
     window.dispatchEvent(new Event("storage"));
   };
@@ -59,10 +57,8 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
             fill="currentColor"
             className="bi bi-person-fill"
             viewBox="0 0 16 16"
-            
           >
-     
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />{" "}
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
           </svg>
         </div>
         <div className="doctor-card-details">
@@ -79,81 +75,74 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
 
       <div className="doctor-card-options-container">
         <button
-            className={`book-appointment-btn ${
+          className={`book-appointment-btn ${
             appointments.length > 0 ? "cancel-appointment" : ""
-            }`}
-            onClick={handleBooking}
+          }`}
+          onClick={handleBooking}
         >
-            {appointments.length > 0 ? (
+          {appointments.length > 0 ? (
             <div>Cancel Appointment</div>
-            ) : (
+          ) : (
             <div>Book Appointment</div>
-            )}
-            <div>No Booking Fee</div>
+          )}
+          <div>No Booking Fee</div>
         </button>
+
         <Popup
           style={{ backgroundColor: "#FFFFFF" }}
           modal
           open={showModal}
           onClose={() => setShowModal(false)}
         >
-          {
-            <div
-              className="doctorbg"
-              style={{ height: "100vh", overflow: "scroll" }}
-            >
-              <div>
-                <div className="doctor-card-profile-image-container">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="46"
-                    height="46"
-                    fill="currentColor"
-                    className="bi bi-person-fill img"
-                    viewBox="0 0 16 16"
-                  >
-                    {" "}
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />{" "}
-                  </svg>
+          <div className="doctorbg" style={{ height: "100vh", overflow: "scroll" }}>
+            <div>
+              <div className="doctor-card-profile-image-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="46"
+                  height="46"
+                  fill="currentColor"
+                  className="bi bi-person-fill img"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+              </div>
+              <div className="doctor-card-details">
+                <div className="doctor-card-detail-name">{name}</div>
+                <div className="doctor-card-detail-speciality">{speciality}</div>
+                <div className="doctor-card-detail-experience">
+                  {experience} years experience
                 </div>
-                <div className="doctor-card-details">
-                  <div className="doctor-card-detail-name">{name}</div>
-                  <div className="doctor-card-detail-speciality">
-                    {speciality}
-                  </div>
-                  <div className="doctor-card-detail-experience">
-                    {experience} years experience
-                  </div>
-                  <div className="doctor-card-detail-consultationfees">
-                    Ratings: {ratings}
-                  </div>
+                <div className="doctor-card-detail-consultationfees">
+                  Ratings: {ratings}
                 </div>
               </div>
-
-              {appointments.length > 0 ? (
-                <>
-                  <h3 style={{ textAlign: "center" }}>Appointment Booked!</h3>
-                  {appointments.map((appointment) => (
-                    <div className="bookedInfo" key={appointment.id}>
-                      <p>Name: {appointment.name}</p>
-                      <p>Phone Number: {appointment.phoneNumber}</p>
-                      <p>Book of Appointment: {appointment.date}</p>
-                      <p>Time Slot: {appointment.selectedSlot}</p>
-                      <button
-                        className="cancel-appointment-btn"
-                        style={{ marginTop: "20px" }}
-                        onClick={() => handleCancel(appointment.id)}
-                      >
-                        Cancel Appointment
-                      </button>
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <AppointmentForm onSubmit={handleFormSubmit} />
-              )}
             </div>
-          }
+
+            {appointments.length > 0 ? (
+              <>
+                <h3 style={{ textAlign: "center" }}>Appointment Booked!</h3>
+                {appointments.map((appointment) => (
+                  <div className="bookedInfo" key={appointment.id}>
+                    <p>Name: {appointment.name}</p>
+                    <p>Phone Number: {appointment.phoneNumber}</p>
+                    <p>Book of Appointment: {appointment.date}</p>
+                    <p>Time Slot: {appointment.selectedSlot}</p>
+                    <button
+                      className="cancel-appointment-btn"
+                      style={{ marginTop: "20px" }}
+                      onClick={handleCancel}
+                    >
+                      Cancel Appointment
+                    </button>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <AppointmentForm onSubmit={handleFormSubmit} />
+            )}
+          </div>
         </Popup>
       </div>
     </div>
