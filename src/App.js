@@ -14,7 +14,7 @@ import ProfileCard from './Components/ProfileCard/ProfileCard';
 import Home from './Components/Home/Home';
 import Notification from './Components/Notification/Notification';
 import BookConsultation from './Components/BookingConsultation/BookConsultation';
-
+import Healthblog from './Components/Healthblog/Healthblog';
 
 function App() {
   return (
@@ -35,6 +35,8 @@ function App() {
           <Route path="/profile-card" element={<ProfileCard />} />
           <Route path="/reports-layout" element={<ReportsLayout />} />
           <Route path="/book-appointment" element={<BookConsultation />} />
+          <Route path="/Healthblog" element={<Healthblog/>}/>
+
           
         </Routes>
         <Notification/>

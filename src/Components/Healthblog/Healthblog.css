@@ -1,0 +1,115 @@
+.healthblogPage {
+    width: 100%;
+    display: justify;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Scoped Hero Section */
+.heroSection {
+    min-height: 100vh;
+    padding-top: 10rem;
+    background-color: transparent;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 800px;
+    text-align: center;
+}
+
+.flexHero {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.heroSection h2 {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.heroSection p {
+    font-size: 18px;
+    color: #777;
+}
+
+/* Topic Cards */
+.topicCard {
+    background: #f9f9f9;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.topicCard h3 {
+    font-size: 22px;
+    color: #333;
+}
+
+.topicCard p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* More Info Button */
+.moreInfoBtn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #2190FF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.moreInfoBtn:hover {
+    background-color: #1869c9;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 980px) {
+    .heroSection {
+        padding-top: 8rem;
+    }
+
+    .heroSection h2 {
+        font-size: 40px;
+    }
+
+    .heroSection p {
+        font-size: 16px;
+    }
+
+    .topicCard {
+        padding: 15px;
+    }
+
+    .moreInfoBtn {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .heroSection {
+        padding-top: 6rem;
+    }
+
+    .heroSection h2 {
+        font-size: 30px;
+    }
+
+    .heroSection p {
+        font-size: 14px;
+    }
+
+    .moreInfoBtn {
+        width: 100%;
+    }
+}
