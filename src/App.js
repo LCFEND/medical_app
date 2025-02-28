@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";  // ❌ Removed BrowserRouter
 import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/Landing_Page/Landing_Page';
 import Login from "./Components/Login/Login";
@@ -19,28 +19,21 @@ import Healthblog from './Components/Healthblog/Healthblog';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-
-        {/* Removing duplicate Notification component from here, it has a route */}
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
-          <Route path="/self-checkup" element={<SelfCheckup />} />
-          <Route path="/notification" element={<Notification />} />
-          <Route path="/reviews" element={<ReviewForm />} />
-          <Route path="/profile-card" element={<ProfileCard />} />
-          <Route path="/reports-layout" element={<ReportsLayout />} />
-          <Route path="/book-appointment" element={<BookConsultation />} />
-          <Route path="/Healthblog" element={<Healthblog/>}/>
-
-          
-        </Routes>
-        <Notification/>
-      </BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/instant-consultation" element={<InstantConsultation />} />
+        <Route path="/self-checkup" element={<SelfCheckup />} />
+        <Route path="/reviews" element={<ReviewForm />} />
+        <Route path="/profile-card" element={<ProfileCard />} />
+        <Route path="/reports-layout" element={<ReportsLayout />} />
+        <Route path="/book-appointment" element={<BookConsultation />} />
+        <Route path="/Healthblog" element={<Healthblog />} />
+      </Routes>
+      <Notification />
     </div>
   );
 }

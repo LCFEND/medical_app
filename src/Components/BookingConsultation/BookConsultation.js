@@ -1,31 +1,38 @@
-import React, { useState, useEffect } from "react";  // ✅ Add useEffect here
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";  
+import { useSearchParams } from 'react-router-dom';
 import DoctorCard from "./DoctorCard/DoctorCard";
-import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch"
+import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch";
 
 const BookConsultation = () => {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
-    
-    const getDoctorsDetails = () => {
-        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
-        .then(res => res.json())
-        .then(data => {
-            if (searchParams.get('speciality')) {
-                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
 
-                setFilteredDoctors(filtered);
-                setIsSearched(true);
-            } else {
-                setFilteredDoctors([]);
-                setIsSearched(false);
-            }
-            setDoctors(data);
-        })
-        .catch(err => console.log(err));
-    };
+    // ✅ Use useCallback to prevent unnecessary re-renders
+    const getDoctorsDetails = useCallback(() => {
+        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
+            .then(res => res.json())
+            .then(data => {
+                if (searchParams.get('speciality')) {
+                    const filtered = data.filter(doctor => 
+                        doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase()
+                    );
+
+                    setFilteredDoctors(filtered);
+                    setIsSearched(true);
+                } else {
+                    setFilteredDoctors([]);
+                    setIsSearched(false);
+                }
+                setDoctors(data);
+            })
+            .catch(err => console.error("Error fetching doctors:", err));
+    }, [searchParams]);  // ✅ Add searchParams as dependency
+
+    useEffect(() => {
+        getDoctorsDetails();
+    }, [getDoctorsDetails]); // ✅ Now this dependency is stable
 
     const handleSearch = (searchText) => {
         if (searchText === '') {
@@ -40,13 +47,6 @@ const BookConsultation = () => {
             setIsSearched(true);
         }
     };
-
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-        console.log("URL Speciality Parameter:", searchParams.get('speciality'));  // Debugging
-        getDoctorsDetails();
-    }, [searchParams]); 
 
     return (
         <center>
@@ -63,7 +63,7 @@ const BookConsultation = () => {
                                         className="doctorcard"
                                         {...doctor}
                                         key={doctor.name}
-                                        profilePic={doctor.profilePic || 'default-image.jpg'} // Provide a fallback image if profilePic is missing
+                                        profilePic={doctor.profilePic || 'default-image.jpg'} // ✅ Provide a fallback image
                                     />
                                 ))
                             ) : (
