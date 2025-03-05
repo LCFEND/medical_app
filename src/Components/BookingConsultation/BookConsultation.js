@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";  // ✅ Add useEffect here
+import React, { useState, useEffect, useCallback } from "react"; // Add useCallback
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import DoctorCard from "./DoctorCard/DoctorCard";
-import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch"
+import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch";
 
 const BookConsultation = () => {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
-    
-    const getDoctorsDetails = () => {
-        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
-        .then(res => res.json())
-        .then(data => {
-            if (searchParams.get('speciality')) {
-                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
 
-                setFilteredDoctors(filtered);
-                setIsSearched(true);
-            } else {
-                setFilteredDoctors([]);
-                setIsSearched(false);
-            }
-            setDoctors(data);
-        })
-        .catch(err => console.log(err));
-    };
+    // Wrap this function with useCallback
+    const getDoctorsDetails = useCallback(() => {
+        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
+            .then(res => res.json())
+            .then(data => {
+                if (searchParams.get('speciality')) {
+                    const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+                    setFilteredDoctors(filtered);
+                    setIsSearched(true);
+                } else {
+                    setFilteredDoctors([]);
+                    setIsSearched(false);
+                }
+                setDoctors(data);
+            })
+            .catch(err => console.log(err));
+    }, [searchParams]); // Now `searchParams` is a dependency
 
     const handleSearch = (searchText) => {
         if (searchText === '') {
@@ -44,9 +44,8 @@ const BookConsultation = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
-        console.log("URL Speciality Parameter:", searchParams.get('speciality'));  // Debugging
-        getDoctorsDetails();
-    }, [searchParams]); 
+        getDoctorsDetails(); // No longer re-created on every render
+    }, [getDoctorsDetails]); // This makes the effect dependent on getDoctorsDetails
 
     return (
         <center>
@@ -63,7 +62,7 @@ const BookConsultation = () => {
                                         className="doctorcard"
                                         {...doctor}
                                         key={doctor.name}
-                                        profilePic={doctor.profilePic || 'default-image.jpg'} // Provide a fallback image if profilePic is missing
+                                        profilePic={doctor.profilePic || 'default-image.jpg'}
                                     />
                                 ))
                             ) : (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './InstantConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
@@ -9,24 +9,24 @@ const InstantConsultation = () => {
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
-    
-    const getDoctorsDetails = () => {
-        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
-        .then(res => res.json())
-        .then(data => {
-            if (searchParams.get('speciality')) {
-                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
 
-                setFilteredDoctors(filtered);
-                setIsSearched(true);
-            } else {
-                setFilteredDoctors([]);
-                setIsSearched(false);
-            }
-            setDoctors(data);
-        })
-        .catch(err => console.log(err));
-    };
+    // Wrap this function with useCallback
+    const getDoctorsDetails = useCallback(() => {
+        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
+            .then(res => res.json())
+            .then(data => {
+                if (searchParams.get('speciality')) {
+                    const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+                    setFilteredDoctors(filtered);
+                    setIsSearched(true);
+                } else {
+                    setFilteredDoctors([]);
+                    setIsSearched(false);
+                }
+                setDoctors(data);
+            })
+            .catch(err => console.log(err));
+    }, [searchParams]); // Now `searchParams` is a dependency
 
     const handleSearch = (searchText) => {
         if (searchText === '') {
@@ -43,10 +43,10 @@ const InstantConsultation = () => {
     };
 
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        getDoctorsDetails();
-    }, [searchParams]); // Add searchParams as a dependency so it updates when the params change
+        getDoctorsDetails(); // No longer re-created on every render
+    }, [getDoctorsDetails]); // This makes the effect dependent on getDoctorsDetails
 
     return (
         <center>
@@ -63,7 +63,7 @@ const InstantConsultation = () => {
                                         className="doctorcard"
                                         {...doctor}
                                         key={doctor.name}
-                                        profilePic={doctor.profilePic || 'default-image.jpg'} // Provide a fallback image if profilePic is missing
+                                        profilePic={doctor.profilePic || 'default-image.jpg'}
                                     />
                                 ))
                             ) : (
