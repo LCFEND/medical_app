@@ -1,53 +1,52 @@
-Scenario Overview
-StayHealthy Inc. is a non-profit organization dedicated to improving healthcare facilities in remote areas with minimal to no medical facilities or resources. The Executive Director has started the Go digital initiative as part of StayHealthy's broader vision to maximize reach. One aspect of the initiative is building a website to help patients access doctors anytime, anywhere.
+StayHealthy Medical Web App — Project Overview
+About the Project:
+This web application was built for StayHealthy Inc., a non-profit organization dedicated to improving healthcare accessibility in underserved and remote areas. As part of their “Go Digital” initiative, the goal of the app is to give patients the ability to connect with doctors online—anytime, anywhere.
 
-You are a front-end developer assigned to design and develop the website.
+My Role:
+As the front-end developer, I was responsible for designing and building the user interface of the application. This is the last Project in my studies.
 
-Problem Statement
-StayHealthy conducted an extensive survey to assess the medical facilities available in remote areas and found that several patients have a tough time finding the right doctor at the right time. There are usually no doctors or hospitals within a 50-mile radius, or the wait time to meet a doctor is too long. Many times, this has resulted in life-threatening emergencies or lost lives.
-With the internet and broadband availability increasing in remote areas, the initiative from StayHealthy will help get patients access to general physicians and specialists at the right time easily.
+🔑 Key Features
+Doctor Search:
+Users can search for doctors by name to quickly find the medical professionals they need.
 
-Project Requirements
-A user-friendly, intuitive, and accessible platform that helps connect patients with doctors and specialists for consultations and medical prescriptions
-Features
-Medical appointments online
-The website must allow patients to schedule appointments with doctors anywhere, anytime.
-Consultation must be available doctors at any time should be possible without prior appointments.
-The patient/end-user must be able to view the different time slots when a doctor is available and select the time slot of their preference.
-The patient must get a reminder or notification on an upcoming appointment.
-The patient must have the ability to cancel or modify the appointment.
-Doctor listing for patients
-The patient/end-user must be able to view the available doctors with their ratings.
-The patient/end-user must be able to view the doctor's ratings and review comments.
-The patient/end-user must be able to search for a specific doctor by name.
-Consultation Feedback
-The patient/end-user must be able to rate the consultation on effectiveness in terms of diagnosis, communication, and so on to contribute to the system's transparency and help other patients make informed choices.
-Profile Management
-A user must sign-up to make any appointment bookings.
-To book an appointment, a user must input mandatory details like name, address, phone number, age, blood group, and any existing medical records.
-The user must have the ability to update their details.
-Access to patient records
-Only the doctor and patient must have access to patient records.
-Patients must be able to download their medical records, such as test reports.
-News feeds and Training
-To keep patients informed of different medical health conditions and healthy lifestyles:
-Educational videos on various topics should be available and sorted by category.
-There are daily tips on healthy lifestyle and other preventive measures accessible.
-Navigation
-Users must be able to navigate the site with minimal clicks.
-Website Administration
-Users must be able to manage patient and doctor profiles, maintaining the system's security and integrity.
-Users must be able to generate reports and analytics on appointment bookings, patient demographics, and healthcare provider performance.
-The development of the project will be phases. In the first phase of the project, the Executive Director has requested for the following features:
+Consultation Feedback:
+After each appointment, patients can leave ratings and feedback based on criteria like communication and effectiveness. This helps improve transparency and guide future patients.
 
-Medical appointments online
-Doctor listing for patients
-Consultation Feedback
-Profile Management
-Navigation
-Expectations from you
-For the first phase of the project, you will need to:
+User Profiles & Booking:
+Users need to sign up to book consultations, ensuring a personalized and secure experience.
 
-Design the UI/UX for the website using Figma
-Develop static and responsive pages using HTML, CSS, and Reactjs
-Deploy the website
+🗂️ Project Structure
+src/ – Main front-end source code
+
+server/ – Back-end logic and API routes (Node.js/Express)
+
+public/ – Static assets like HTML templates and images
+
+screenshots/ – App mockups and visuals
+
+Configuration files – Includes .babelrc, webpack.config.js, Dockerfile, package.json, and more for setting up and managing the project environment
+
+⚙️ Tech Stack
+Front-End: React (with Webpack and Babel for bundling and transpiling)
+
+Back-End: Node.js with Express
+
+Containerization: Docker for easy deployment and environment management
+
+Package Management: npm (Node Package Manager)
+
+🚀 Getting Started
+To set up and run the project locally:
+
+Clone the repository
+
+git clone https://github.com/LCFEND/medical_app.git
+cd medical_app
+Install dependencies
+
+npm install
+Start the development server
+
+npm start
+By default, the app will be running at: http://localhost:3000
+
