@@ -29,7 +29,7 @@ Configuration files – Includes .babelrc, webpack.config.js, Dockerfile, packag
 ⚙️ Tech Stack
 Front-End: React (with Webpack and Babel for bundling and transpiling)
 
-Back-End: Node.js with Express
+Back-End: MongoDb with Express
 
 Containerization: Docker for easy deployment and environment management
 
