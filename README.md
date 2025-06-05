@@ -18,7 +18,7 @@ Users need to sign up to book consultations, ensuring a personalized and secure 
 🗂️ Project Structure
 src/ – Main front-end source code
 
-server/ – Back-end logic and API routes (Node.js/Express)
+server/ – Back-end logic and API routes (MongoDb/Express)
 
 public/ – Static assets like HTML templates and images
 
