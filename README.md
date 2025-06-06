@@ -50,3 +50,13 @@ Start the development server
 npm start
 By default, the app will be running at: http://localhost:3000
 
+Mock JSON Server
+----------------
+To simulate the backend without MongoDB run the mock server:
+
+```
+npm run mock-server
+```
+
+The mock server listens on port `8181` and stores data in `mock-server/db.json`.
+
