@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const { join } = require('path');
-const { Low, JSONFile } = require('lowdb');
+// lowdb v5+ exposes adapters like JSONFile under the `lowdb/node` entry
+// Using `require('lowdb')` doesn't export JSONFile, so import it from `lowdb/node`
+const { Low } = require('lowdb');
+const { JSONFile } = require('lowdb/node');
 const { nanoid } = require('nanoid');
 
 const app = express();
