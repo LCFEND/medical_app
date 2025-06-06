@@ -18,7 +18,7 @@ Users need to sign up to book consultations, ensuring a personalized and secure 
 🗂️ Project Structure
 src/ – Main front-end source code
 
-server/ – Back-end logic and API routes (MongoDb/Express)
+mock-server/ – Express-based mock backend storing data in JSON
 
 public/ – Static assets like HTML templates and images
 
@@ -29,7 +29,7 @@ Configuration files – Includes .babelrc, webpack.config.js, Dockerfile, packag
 ⚙️ Tech Stack
 Front-End: React (with Webpack and Babel for bundling and transpiling)
 
-Back-End: MongoDb with Express
+Back-End: Mock JSON server built with Express and LowDB
 
 Containerization: Docker for easy deployment and environment management
 
