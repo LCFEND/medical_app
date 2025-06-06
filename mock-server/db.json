@@ -1,3 +1,12 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "q-0dGLvnxZzQLC8KOcYF8",
+      "email": "leecoombes@mail.de",
+      "password": "queensport86",
+      "name": "Lee-Ann Coombes",
+      "phone": "5165027850",
+      "createdAt": "2025-06-06T12:32:26.195Z"
+    }
+  ]
 }

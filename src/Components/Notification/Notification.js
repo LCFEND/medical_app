@@ -54,12 +54,6 @@ const Notification = () => {
             <p className="appointment-card__message">
               <strong>Phone Number:</strong> {appointmentData?.phoneNumber}
             </p>
-            <p className="appointment-card__message">
-              <strong>Date of Appointment:</strong> {appointmentData?.date}
-            </p>
-            <p className="appointment-card__message">
-              <strong>Time Slot:</strong> {appointmentData?.selectedSlot}
-            </p>
           </div>
         </div>
       )}

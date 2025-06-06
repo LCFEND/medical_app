@@ -123,15 +123,13 @@ const DoctorCard = ({ name, speciality, experience, ratings }) => {
             {/* Show appointment details or booking form */}
             {appointmentData ? (
               <>
-                <h3 style={{ textAlign: "center" }}>Appointment Booked!</h3>
+                <h3 style={{ textAlign: "center" }}>Thank you for your booking! </h3>
                 <div className="bookedInfo">
                   <p>Name: {appointmentData.name}</p>
                   <p>Phone Number: {appointmentData.phoneNumber}</p>
                   <p>Book of Appointment: {appointmentData.date}</p>
                   <p>Time Slot: {appointmentData.selectedSlot}</p>
-                  <button className="cancel-appointment-btn" onClick={handleCancel}>
-                    Cancel Appointment
-                  </button>
+                  <h3 style={{ textAlign: "center" }}>We will confirm with you shortly!</h3>
                 </div>
               </>
             ) : (
