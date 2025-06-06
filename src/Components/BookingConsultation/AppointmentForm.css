@@ -7,3 +7,9 @@
     margin: 25px;
     border-radius: 10px;
 }
+
+.confirmation-note {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
+}

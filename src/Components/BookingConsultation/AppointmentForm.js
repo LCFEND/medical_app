@@ -34,6 +34,10 @@ const AppointmentForm = ({ onSubmit }) => {
   
     return (
       <form onSubmit={handleFormSubmit} className="appointment-form">
+        <p className="confirmation-note">
+          Your booking request will be confirmed by our team. You will be
+          notified once it is approved.
+        </p>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input

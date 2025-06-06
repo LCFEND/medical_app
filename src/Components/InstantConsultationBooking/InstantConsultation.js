@@ -44,6 +44,13 @@ const InstantConsultation = () => {
 
     const navigate = useNavigate();
 
+    // Redirect unauthenticated users to login
+    useEffect(() => {
+        if (!sessionStorage.getItem('auth-token')) {
+            navigate('/login');
+        }
+    }, [navigate]);
+
     useEffect(() => {
         getDoctorsDetails(); // No longer re-created on every render
     }, [getDoctorsDetails]); // This makes the effect dependent on getDoctorsDetails

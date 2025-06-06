@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const { join } = require('path');
-const { Low, JSONFile } = require('lowdb');
+// lowdb v5+ exposes adapters like JSONFile under the `lowdb/node` entry
+// Using `require('lowdb')` doesn't export JSONFile, so import it from `lowdb/node`
+const { Low } = require('lowdb');
+const { JSONFile } = require('lowdb/node');
 const { nanoid } = require('nanoid');
 
 const app = express();
@@ -67,6 +70,17 @@ app.put('/api/auth/user', async (req, res) => {
   res.json({ authtoken: 'mock-token', user });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Mock server running on port ${PORT}`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(
+      `Port ${PORT} is already in use. Set the PORT env variable to use a different port.`
+    );
+    process.exit(1);
+  } else {
+    throw err;
+  }
 });

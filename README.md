@@ -45,6 +45,9 @@ cd medical_app
 Install dependencies
 
 npm install
+Install mock server dependencies (run once)
+
+npm install --prefix mock-server
 Start the development server
 
 npm start
@@ -52,11 +55,26 @@ By default, the app will be running at: http://localhost:3000
 
 Mock JSON Server
 ----------------
-To simulate the backend without MongoDB run the mock server:
+To simulate the backend without MongoDB run the mock server. Make sure you've
+installed its dependencies first by running `npm install --prefix mock-server`
+(you only need to do this once):
 
 ```
 npm run mock-server
 ```
 
 The mock server listens on port `8181` and stores data in `mock-server/db.json`.
+If you see an `EADDRINUSE` error, another process is already using the port.
+Stop the other server or specify a different port, e.g.
+
+```bash
+# bash/zsh
+PORT=3001 npm run mock-server
+
+# Windows cmd
+set PORT=3001 && npm run mock-server
+
+# PowerShell
+$env:PORT=3001; npm run mock-server
+```
 
