@@ -1,9 +1,9 @@
 StayHealthy Medical Web App — Project Overview
 About the Project:
-This web application was built for StayHealthy Inc., a non-profit organization dedicated to improving healthcare accessibility in underserved and remote areas. As part of their “Go Digital” initiative, the goal of the app is to give patients the ability to connect with doctors online—anytime, anywhere.
+This web application was built during my studies the Project involved building a medical App for StayHealthy Inc., a non-profit organization dedicated to improving healthcare accessibility in underserved and remote areas. As part of their “Go Digital” initiative, the goal of the app is to give patients the ability to connect with doctors online—anytime, anywhere.
 
 My Role:
-As the front-end developer, I was responsible for designing and building the user interface of the application. This is the last Project in my studies.
+As the front-end developer, I was responsible for designing and building the user interface of the application.
 
 🔑 Key Features
 Doctor Search:
@@ -45,18 +45,18 @@ cd medical_app
 Install dependencies
 
 npm install
+
 Install mock server dependencies (run once)
-
 npm install --prefix mock-server
-Start the development server
 
+Start the development server
 npm start
+
 By default, the app will be running at: http://localhost:3000
 
 Mock JSON Server
 ----------------
-To simulate the backend without MongoDB run the mock server. Make sure you've
-installed its dependencies first by running `npm install --prefix mock-server`
+To simulate the backend open new terminal to run the mock server in the project folder.
 (you only need to do this once):
 
 ```
@@ -64,17 +64,4 @@ npm run mock-server
 ```
 
 The mock server listens on port `8181` and stores data in `mock-server/db.json`.
-If you see an `EADDRINUSE` error, another process is already using the port.
-Stop the other server or specify a different port, e.g.
-
-```bash
-# bash/zsh
-PORT=3001 npm run mock-server
-
-# Windows cmd
-set PORT=3001 && npm run mock-server
-
-# PowerShell
-$env:PORT=3001; npm run mock-server
-```
 
