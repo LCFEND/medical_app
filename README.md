@@ -64,4 +64,17 @@ npm run mock-server
 ```
 
 The mock server listens on port `8181` and stores data in `mock-server/db.json`.
+If you see an `EADDRINUSE` error, another process is already using the port.
+Stop the other server or specify a different port, e.g.
+
+```bash
+# bash/zsh
+PORT=3001 npm run mock-server
+
+# Windows cmd
+set PORT=3001 && npm run mock-server
+
+# PowerShell
+$env:PORT=3001; npm run mock-server
+```
 
